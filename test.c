@@ -56,5 +56,8 @@ int main(void)
 	printf("Chars printed in original: %d \n", printf("Hello %s!\n", nullstr));
 	ft_printf("Chars printed in custom: %d \n", ft_printf("Hello %s!\n", nullstr));
 
+	printf("🐥 Test case: ???\n");
+	printf("Chars printed in original: %d \n", printf("Hello %s!\n", nullstr));
+	ft_printf("Chars printed in custom: %d \n", ft_printf("Hello %s!\n", nullstr));
 	return (0);
 }
