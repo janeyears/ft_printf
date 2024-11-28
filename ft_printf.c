@@ -11,49 +11,67 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_check_type(const char input, va_list args)
+int	ft_validate(char c)
 {
-	int	len;
+	int		i;
+	char	*a;
 
-	len = 0;
+	i = 0;
+	a = "cspdiuxX%";
+	while (a[i])
+	{
+		if (c == a[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+int	ft_check_type(va_list args, const char input, size_t *count)
+{
+	if(ft_validate(input) != 1)
+		return (-1);
 	if (input == 'c')
-		len += ft_printchar(va_arg(args, char));
+		return(ft_putchar(va_arg(args, int), count));
 	else if (input == 's')
-		len += ft_printstr(va_arg(args, char *));
+		return(ft_putstr(va_arg(args, char *), count));
 	else if (input == 'p')
-		len += ft_printptr(va_arg(args, unsigned long));
+		return(ft_putptr(va_arg(args, unsigned long), count));
 	else if (input == 'd' || input == 'i')
-		len += ft_printnbr(va_arg(args, int));
+		return(ft_putnbr(va_arg(args, int), count));
 	else if (input == 'u')
-		len += ft_printuns(va_arg(args, unsigned int));
+		return(ft_putuns(va_arg(args, unsigned int), count));
 	else if (input == 'x' || input == 'X')
-		len += ft_printhex(va_arg(args, unsigned int), input);
+		return(ft_puthex(va_arg(args, unsigned int), input, count));
 	else if (input == '%')
-		len += ft_percentage();
-	return (len);
+		return(ft_putchar('%', count));
+	return (0);
 }
 
 int	ft_printf(const char *input, ...)
 {
 	va_list	args;
-	int	i;
-	int	total;
-	
-	i = 0;
-	total = 0;
+	size_t	count;
+	int		res;
+
+	if (!input)
+		return (-1);
+	count = 0;
 	va_start(args, input);
-	while (input[i] != '\0')
+	while (*input)
+	{
+		if (*input == '%' && (++input))
 		{
-			if (input[i] == '%' && input[i + 1] != '\0')
-			{
-				total += ft_check_type(input[i + 1], &args);
-				i++;
-			}
-			else
-				total += ft_printchar(input[i]);
-			i++;
+			res = ft_check_type(args, *input, &count);
+			if (res == -1)
+				return (va_end(args), -1);
 		}
-	va_end(args);
-	return (total);
+		else
+		{
+			res = ft_putchar(*input, &count);
+			if (res == -1)
+				return (va_end(args), -1);
+		}
+		input++;
+	}
+	return (va_end(args), count);
 }

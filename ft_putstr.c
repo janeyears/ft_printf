@@ -12,20 +12,21 @@
 
 #include "ft_printf.h"
 
-int	ft_printstr(char *str)
+int	ft_putstr(char *s, size_t *count)
 {
 	int	i;
+	int	res;
 
+	res = 0;
 	i = 0;
-	if (str == NULL)
+	if (s == NULL)
+		s = "(null)";
+	while (s[i] != '\0')
 	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
+		res = ft_putchar(s[i], count);
+		if (res == -1)
+			return (-1);
 		i++;
 	}
-	return (i);
+	return (0);
 }

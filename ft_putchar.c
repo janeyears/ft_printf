@@ -12,8 +12,10 @@
 
 #include "ft_printf.h"
 
-int	ft_printchar(char c)
+int	ft_putchar(char c, size_t *count)
 {
-	write(1, &c, 1);
-	return (1);
+	if (write(1, &c, 1) == -1)
+		return (-1);
+	(*count)++;
+	return(0);
 }

@@ -1,8 +1,9 @@
-#include <stdio.h>
+#include "ft_printf.h"
 
 int main(void)
 {
-	char *str = NULL;
-	printf("Hello %s World", str);
+	char *str = "and welcome";
+	printf("Hello %s World\n", str);
+	ft_printf("Hello %s World\n", str);
 	return 0;
 }
