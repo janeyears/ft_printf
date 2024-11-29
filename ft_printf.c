@@ -6,11 +6,12 @@
 /*   By: ekashirs <ekashirs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:52:38 by ekashirs          #+#    #+#             */
-/*   Updated: 2024/11/29 14:23:42 by ekashirs         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:01:47 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 int	ft_validate(char c)
 {
 	int		i;
@@ -26,25 +27,27 @@ int	ft_validate(char c)
 	}
 	return (0);
 }
+
 int	ft_check_type(va_list *args, const char **input, size_t *count)
 {
 	const char	cur = **input;
-	if(ft_validate(cur) != 1)
-		return(ft_putchar('%', count), ft_putchar(cur, count));
+
+	if (ft_validate(cur) != 1)
+		return (ft_putchar('%', count), ft_putchar(cur, count));
 	if (cur == 'c')
-		return(ft_putchar(va_arg(*args, int), count));
+		return (ft_putchar(va_arg(*args, int), count));
 	else if (cur == 's')
-		return(ft_putstr(va_arg(*args, char *), count));
+		return (ft_putstr(va_arg(*args, char *), count));
 	else if (cur == 'p')
-		return(ft_putptr(va_arg(*args, unsigned long), count));
+		return (ft_putptr(va_arg(*args, unsigned long), count));
 	else if (cur == 'd' || cur == 'i')
-		return(ft_putnbr(va_arg(*args, int), count));
+		return (ft_putnbr(va_arg(*args, int), count));
 	else if (cur == 'u')
-		return(ft_putuns(va_arg(*args, unsigned int), count));
+		return (ft_putuns(va_arg(*args, unsigned int), count));
 	else if (cur == 'x' || cur == 'X')
-		return(ft_puthex(va_arg(*args, unsigned int), cur, count));
+		return (ft_puthex(va_arg(*args, unsigned int), cur, count));
 	else if (cur == '%')
-		return(ft_putchar('%', count));
+		return (ft_putchar('%', count));
 	return (0);
 }
 

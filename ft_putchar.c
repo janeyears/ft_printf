@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 12:39:39 by ekashirs          #+#    #+#             */
-/*   Updated: 2024/11/26 12:45:00 by ekashirs         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:58:56 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int	ft_putchar(char c, size_t *count)
 	if (write(1, &c, 1) == -1)
 		return (-1);
 	(*count)++;
-	return(0);
+	return (0);
 }

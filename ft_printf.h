@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ekashirs <ekashirs@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/29 15:53:13 by ekashirs          #+#    #+#             */
+/*   Updated: 2024/11/29 15:59:18 by ekashirs         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -12,6 +24,6 @@ int	ft_putstr(char *str, size_t *count);
 int	ft_putptr(unsigned long address, size_t *count);
 int	ft_puthex(unsigned long nbr, char c, size_t *count);
 int	ft_putnbr(int nb, size_t *count);
-int ft_putuns(unsigned int nb, size_t *count);
+int	ft_putuns(unsigned int nb, size_t *count);
 
 #endif
