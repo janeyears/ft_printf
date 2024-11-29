@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:52:38 by ekashirs          #+#    #+#             */
-/*   Updated: 2024/11/26 13:56:13 by ekashirs         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:23:42 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,24 @@ int	ft_validate(char c)
 	}
 	return (0);
 }
-int	ft_check_type(va_list *args, const char input, size_t *count)
+int	ft_check_type(va_list *args, const char **input, size_t *count)
 {
-	if(ft_validate(input) != 1)
-		return (-1);
-	if (input == 'c')
+	const char	cur = **input;
+	if(ft_validate(cur) != 1)
+		return(ft_putchar('%', count), ft_putchar(cur, count));
+	if (cur == 'c')
 		return(ft_putchar(va_arg(*args, int), count));
-	else if (input == 's')
+	else if (cur == 's')
 		return(ft_putstr(va_arg(*args, char *), count));
-	else if (input == 'p')
+	else if (cur == 'p')
 		return(ft_putptr(va_arg(*args, unsigned long), count));
-	else if (input == 'd' || input == 'i')
+	else if (cur == 'd' || cur == 'i')
 		return(ft_putnbr(va_arg(*args, int), count));
-	else if (input == 'u')
+	else if (cur == 'u')
 		return(ft_putuns(va_arg(*args, unsigned int), count));
-	else if (input == 'x' || input == 'X')
-		return(ft_puthex(va_arg(*args, unsigned int), input, count));
-	else if (input == '%')
+	else if (cur == 'x' || cur == 'X')
+		return(ft_puthex(va_arg(*args, unsigned int), cur, count));
+	else if (cur == '%')
 		return(ft_putchar('%', count));
 	return (0);
 }
@@ -59,9 +60,10 @@ int	ft_printf(const char *input, ...)
 	va_start(args, input);
 	while (*input)
 	{
-		if (*input == '%' && (++input))
+		if (*input == '%')
 		{
-			res = ft_check_type(&args, *input, &count);
+			input++;
+			res = ft_check_type(&args, &input, &count);
 			if (res == -1)
 				return (va_end(args), -1);
 		}
