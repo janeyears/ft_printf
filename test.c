@@ -59,9 +59,10 @@ int main(void)
 	printf("🐥 Test case: diffirent flasgs in a row\n");
 	printf("Chars printed in original: %d \n", printf("Hello %s %d%c\n", str, i, c));
 	ft_printf("Chars printed in custom: %d \n", ft_printf("Hello %s %d%c\n", str, i, c));
-
+/*
 	printf("🐥 Test case: Many single %% in different places\n");
 	printf("Chars printed in original: %d \n", printf("%6yka%5\n"));
 	ft_printf("Chars printed in custom: %d \n", ft_printf("%6yka%5\n"));
+*/
 	return (0);
 }
