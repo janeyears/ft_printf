@@ -28,25 +28,24 @@ int	ft_validate(char c)
 	return (0);
 }
 
-int	ft_check_type(va_list *args, const char **input, size_t *count)
+int	ft_check_type(va_list *args, const char input, size_t *count)
 {
-	const char	cur = **input;
 
-	if (ft_validate(cur) != 1)
-		return (ft_putchar('%', count), ft_putchar(cur, count));
-	if (cur == 'c')
+	if (ft_validate(input) != 1)
+		return (ft_putchar('%', count), ft_putchar(input, count));
+	if (input == 'c')
 		return (ft_putchar(va_arg(*args, int), count));
-	else if (cur == 's')
+	else if (input == 's')
 		return (ft_putstr(va_arg(*args, char *), count));
-	else if (cur == 'p')
+	else if (input == 'p')
 		return (ft_putptr(va_arg(*args, unsigned long), count));
-	else if (cur == 'd' || cur == 'i')
+	else if (input == 'd' ||(input) == 'i')
 		return (ft_putnbr(va_arg(*args, int), count));
-	else if (cur == 'u')
+	else if (input == 'u')
 		return (ft_putuns(va_arg(*args, unsigned int), count));
-	else if (cur == 'x' || cur == 'X')
-		return (ft_puthex(va_arg(*args, unsigned int), cur, count));
-	else if (cur == '%')
+	else if (input == 'x' ||(input) == 'X')
+		return (ft_puthex(va_arg(*args, unsigned int),(input), count));
+	else if (input == '%')
 		return (ft_putchar('%', count));
 	return (0);
 }
@@ -55,7 +54,6 @@ int	ft_printf(const char *input, ...)
 {
 	va_list	args;
 	size_t	count;
-	int		res;
 
 	if (!input)
 		return (-1);
@@ -66,14 +64,12 @@ int	ft_printf(const char *input, ...)
 		if (*input == '%')
 		{
 			input++;
-			res = ft_check_type(&args, &input, &count);
-			if (res == -1)
+			if (ft_check_type(&args, *input, &count) == -1)
 				return (va_end(args), -1);
 		}
 		else
 		{
-			res = ft_putchar(*input, &count);
-			if (res == -1)
+			if (ft_putchar(*input, &count) == -1)
 				return (va_end(args), -1);
 		}
 		input++;
