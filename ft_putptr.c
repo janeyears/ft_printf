@@ -6,17 +6,17 @@
 /*   By: ekashirs <ekashirs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 12:58:07 by ekashirs          #+#    #+#             */
-/*   Updated: 2024/11/29 15:55:19 by ekashirs         ###   ########.fr       */
+/*   Updated: 2024/12/02 12:59:50 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdint.h>
 
 int	ft_putptr(unsigned long address, size_t *count)
 {
 	int	res;
 
+	res = 0;
 	if (!address)
 		return (ft_putstr("(nil)", count));
 	res = ft_putstr("0x", count);

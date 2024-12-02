@@ -1,5 +1,6 @@
 #include "ft_printf.h"
 #include <limits.h>
+#include <stdio.h>
 
 int main(void)
 {
@@ -7,6 +8,7 @@ int main(void)
 	char c = '!';
 	char *ptr = str;
 	int i = 42;
+	int a = -42;
 	unsigned int nbr = 4294967295;
 	int min = INT_MIN;
 	int max = INT_MAX;
@@ -25,8 +27,8 @@ int main(void)
 	ft_printf("Chars printed in custom: %d \n", ft_printf("%p\n", ptr));
 
 	printf("🐥 Test case: d\n");
-	printf("Chars printed in original: %d \n", printf("%d\n", i));
-	ft_printf("Chars printed in custom: %d \n", ft_printf("%d\n", i));
+	printf("Chars printed in original: %d \n", printf("%d\n", a));
+	ft_printf("Chars printed in custom: %d \n", ft_printf("%d\n", a));
 
 	printf("🐥 Test case: i\n");
 	printf("Chars printed in original: %d \n", printf("%i\n", i));
@@ -60,9 +62,15 @@ int main(void)
 	printf("Chars printed in original: %d \n", printf("Hello %s %d%c\n", str, i, c));
 	ft_printf("Chars printed in custom: %d \n", ft_printf("Hello %s %d%c\n", str, i, c));
 
+	/* 
 	printf("🐥 Test case: Many single %% in different places\n");
 	printf("Chars printed in original: %d \n", printf("%6y % k%y%\n"));
 	ft_printf("Chars printed in custom: %d \n", ft_printf("%6y % k%y%\n"));
+	*/
+
+	printf("🐥 Test case: 2 strings \n");
+	printf("Chars printed in original: %d \n", printf("Int max: %d\n" "Int min: %d\n", max, min));
+	ft_printf("Chars printed in custom: %d \n", ft_printf("Int max: %d\n" "Int min: %d\n", max, min));
 
 	return (0);
 }

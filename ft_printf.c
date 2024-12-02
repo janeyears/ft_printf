@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:52:38 by ekashirs          #+#    #+#             */
-/*   Updated: 2024/11/29 16:01:47 by ekashirs         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:11:01 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	ft_validate(char c)
 
 int	ft_check_type(va_list *args, const char input, size_t *count)
 {
-
 	if (ft_validate(input) != 1)
 		return (ft_putchar('%', count), ft_putchar(input, count));
 	if (input == 'c')
@@ -39,12 +38,12 @@ int	ft_check_type(va_list *args, const char input, size_t *count)
 		return (ft_putstr(va_arg(*args, char *), count));
 	else if (input == 'p')
 		return (ft_putptr(va_arg(*args, unsigned long), count));
-	else if (input == 'd' ||(input) == 'i')
+	else if (input == 'd' || (input) == 'i')
 		return (ft_putnbr(va_arg(*args, int), count));
 	else if (input == 'u')
 		return (ft_putuns(va_arg(*args, unsigned int), count));
-	else if (input == 'x' ||(input) == 'X')
-		return (ft_puthex(va_arg(*args, unsigned int),(input), count));
+	else if (input == 'x' || (input) == 'X')
+		return (ft_puthex(va_arg(*args, unsigned int), input, count));
 	else if (input == '%')
 		return (ft_putchar('%', count));
 	return (0);

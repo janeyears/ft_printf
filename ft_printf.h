@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 15:53:13 by ekashirs          #+#    #+#             */
-/*   Updated: 2024/11/29 15:59:18 by ekashirs         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:11:55 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdio.h>
 
 int	ft_printf(const char *input, ...);
 int	ft_check_type(va_list *args, const char input, size_t *count);
