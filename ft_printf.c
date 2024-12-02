@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:52:38 by ekashirs          #+#    #+#             */
-/*   Updated: 2024/12/02 13:11:01 by ekashirs         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:06:34 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_check_type(va_list *args, const char input, size_t *count)
 	else if (input == 'u')
 		return (ft_putuns(va_arg(*args, unsigned int), count));
 	else if (input == 'x' || (input) == 'X')
-		return (ft_puthex(va_arg(*args, unsigned int), input, count));
+		return (ft_puthex(va_arg(*args, unsigned long), input, count));
 	else if (input == '%')
 		return (ft_putchar('%', count));
 	return (0);
